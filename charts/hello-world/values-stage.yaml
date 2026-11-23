@@ -1,0 +1,16 @@
+# This file exists → hello-world IS deployed to stage.
+# Delete this file to stop deploying to stage.
+
+# targetNamespace: read by the ApplicationSet to set the ArgoCD destination.
+# Not used by Helm templates — it's a convention for the GitOps pipeline.
+targetNamespace: my-team-frontend
+
+# image.tag is auto-updated by ArgoCD Image Updater
+image:
+  tag: "a1b2c3d"
+
+replicaCount: 2
+config:
+  appEnv: "stage"
+  logLevel: "debug"
+  apiUrl: "http://worker-service.my-team-workers.svc:8081"

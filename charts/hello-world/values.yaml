@@ -1,0 +1,29 @@
+# Base defaults — overridden per-env by values-<env>.yaml
+image:
+  repository: quay.io/my-org/hello-world
+  tag: "latest"
+  pullPolicy: IfNotPresent
+replicaCount: 1
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi
+config:
+  appEnv: "default"
+  logLevel: "info"
+  apiUrl: "http://localhost:8081"
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilization: 80
+
+# targetNamespace is set per-env in values-<env>.yaml
+# (not used by Helm templates — read by the ApplicationSet)

@@ -1,0 +1,24 @@
+image:
+  repository: quay.io/my-org/admin-dashboard
+  tag: "latest"
+  pullPolicy: IfNotPresent
+replicaCount: 1
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi
+config:
+  appEnv: "default"
+  logLevel: "info"
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilization: 80

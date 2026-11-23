@@ -1,0 +1,24 @@
+# This file exists → hello-world IS deployed to production.
+
+targetNamespace: my-team-frontend
+
+image:
+  tag: "a1b2c3d"
+
+replicaCount: 5
+resources:
+  requests:
+    cpu: 500m
+    memory: 512Mi
+  limits:
+    cpu: "1"
+    memory: 1Gi
+config:
+  appEnv: "production"
+  logLevel: "warn"
+  apiUrl: "http://worker-service.my-team-workers.svc:8081"
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilization: 70

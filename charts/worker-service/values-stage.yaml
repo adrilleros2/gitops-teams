@@ -1,0 +1,14 @@
+# This file exists → worker-service IS deployed to stage.
+# There is NO values-production.yaml → worker-service is NOT deployed to prod.
+
+targetNamespace: my-team-workers
+
+image:
+  tag: "b2c3d4e"
+
+replicaCount: 2
+config:
+  appEnv: "stage"
+  logLevel: "debug"
+  queueUrl: "redis://redis.my-team-workers.svc:6379"
+  concurrency: "2"

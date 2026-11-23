@@ -1,0 +1,12 @@
+# This file exists → admin-dashboard IS deployed to production.
+# There is NO values-stage.yaml → admin-dashboard is NOT deployed to stage.
+
+targetNamespace: my-team-admin
+
+image:
+  tag: "c3d4e5f"
+
+replicaCount: 2
+config:
+  appEnv: "production"
+  logLevel: "warn"
